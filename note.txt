@@ -1,0 +1,27 @@
+Git
+	git  mkdir learngit 创建一个空目录learngit
+	cd learngit 进入目录learngit
+	pwd 显示当前目录
+	git init 将目录初始化为git仓库
+	git add 文件名 将文件添加到git仓库，可以一次添加多个
+	git commit -m "修改提示" 将添加的的文件进行提交
+	git status 查看仓库当前状态
+	git diff diff即different，查看具体修改
+	git log 查看版本历史记录
+	git log --pretty=oneline查看简版历史记录
+	git reset --hard HEAD^    head表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，表示重回某个版本
+	cat 文件名  查看文件详细内容 
+	git reflog  查看每一次指令
+	git diff HEAD -- 文件名    查看工作区和版本库里面最新版本的区别
+	git checkout -- 文件名    意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+		一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+		一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+		总之，就是让这个文件回到最近一次git commit或git add时的状态。
+	git reset HEAD <file> 把暂存区的修改撤销掉，重新放回工作区。	
+	
+	远程库
+	第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：
+	1）$ ssh-keygen -t rsa -C "youremail@example.com"
+	2）github添加ssh
+	3）命令行输入 git remote add origin git@server-name:path/repo-name.git   关联远程库
+		git push -u origin master 推送本地库所有内容
