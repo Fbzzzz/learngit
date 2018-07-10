@@ -11,4 +11,5 @@ master change
 Dev changes
 >>>>>>> dev
 Creating a new branch is quick AND simple.
-
+ 
+change readme
