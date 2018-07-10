@@ -26,7 +26,10 @@ Git
 	2）github添加ssh
 	3）命令行输入 git remote add origin git@server-name:path/repo-name.git   关联远程库
 		git push -u origin master 推送本地库所有内容
-		此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+		此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；但首先依然要先add然后commit
 		
 		
 		/*18.07.09 系统，环境安装；git学习，今日学习到建立远程库，并将本地库内容推送到远程，但修改后推送不成功*/
+		
+		/18.07.10,昨日问题已解决/
+	git clone git@github.com:Fbzzzz/远程库名.git  从远程库克隆到当前目录	
