@@ -6,7 +6,8 @@ Git
 	git add 文件名 将文件添加到git仓库，可以一次添加多个
 	git commit -m "修改提示" 将添加的的文件进行提交
 	git status 查看仓库当前状态
-	git diff diff即different，查看具体修改
+	git diff    diff即different，查看具体修改
+	cat 文件名    查看文件具体内容
 	git log 查看版本历史记录
 	git log --pretty=oneline查看简版历史记录
 	git reset --hard HEAD^    head表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，表示重回某个版本
@@ -26,10 +27,49 @@ Git
 	2）github添加ssh
 	3）命令行输入 git remote add origin git@server-name:path/repo-name.git   关联远程库
 		git push -u origin master 推送本地库所有内容
-		此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；但首先依然要先add然后commit
+		此后，每次本地提交后，只要有必要，就可以使用命令git push origin 分支名     推送最新修改；但首先依然要先add然后commit
 		
 		
 		/*18.07.09 系统，环境安装；git学习，今日学习到建立远程库，并将本地库内容推送到远程，但修改后推送不成功*/
 		
 		/18.07.10,昨日问题已解决/
-	git clone git@github.com:Fbzzzz/远程库名.git  从远程库克隆到当前目录	
+	
+		git clone git@github.com:Fbzzzz/远程库名.git  从远程库克隆到当前目录	
+	
+	分支	
+		git branch 查看分支
+		git branch 分支名      创建分支
+		git checkout 分支名      切换分支、
+		git branch -b 分支名    创建并切换分支
+		git merge 分支名      合并某分支到当前分支
+		git branch -d 分支名       删除分支
+		       --no-ff     合并分支时加上表示使用普通模式合并，能看出曾经做过合并，而使用fast forward模式合并看不出曾经做过合并
+	
+		git log --graph      命令可以看到分支合并图。  $ git log --graph --pretty=oneline --abbrev-commit
+		
+	bug修复
+		先用git stash 暂存当前内容，结束后再Git stash pop，回到工作现场
+		
+		
+		
+	多人协作
+		1.首先，可以试图用git push origin <branch-name>推送自己的修改；
+		2.如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+		3.如果合并有冲突，则解决冲突，并在本地提交；
+		4.没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+		
+		如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>
+		
+		git remote -v  查看远程库详细内容
+		本地新建的分支如果不推送到远程，对其他人就是不可见的；
+		在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+		
+	标签
+		命令git tag <tagname>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+		命令git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+		命令git tag可以查看所有标签。
+		命令git push origin <tagname>可以推送一个本地标签；
+		命令git push origin --tags可以推送全部未推送过的本地标签；
+		命令git tag -d <tagname>可以删除一个本地标签；
+		命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
+	
